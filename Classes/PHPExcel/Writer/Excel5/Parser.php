@@ -108,6 +108,12 @@ class PHPExcel_Writer_Excel5_Parser
     public $references;
 
     /**
+     * Array of Excel ptg indices
+     * @var array
+     */
+    private $ptg;
+
+    /**
      * The class constructor
      *
      */
