@@ -192,6 +192,20 @@ class PHPExcel_Writer_Excel5_Worksheet extends PHPExcel_Writer_Excel5_BIFFwriter
     public $fontHashIndex;
 
     /**
+     * Flag indicating whether formulas should be calculated or just written
+     * 
+     * @var bool
+     */
+    private $_preCalculateFormulas;
+
+    /**
+     * Flag indicating whether headers were written
+     * 
+     * @var bool|integer
+     */
+    private $_print_headers;
+    
+    /**
      * Constructor
      *
      * @param int        &$str_total        Total number of strings

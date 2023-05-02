@@ -37,13 +37,32 @@ class PHPExcel_Shared_OLE_PPS_Root extends PHPExcel_Shared_OLE_PPS
     protected $tempDirectory = null;
 
     /**
+     * Small block size
+     * 
+     * @var float
+     */
+    private $_SMALL_BLOCK_SIZE;
+
+    /**
+     * Big block size
+     * 
+     * @var float
+     */
+    private $_BIG_BLOCK_SIZE;
+
+    /**
+     * Temporary file header
+     * 
+     * @var object
+     */
+    private $_FILEH_;
+    
+    /**
      * @param integer $time_1st A timestamp
      * @param integer $time_2nd A timestamp
      */
     public function __construct($time_1st, $time_2nd, $raChild)
     {
-        $this->_tempDir = PHPExcel_Shared_File::sys_get_temp_dir();
-
         parent::__construct(null, PHPExcel_Shared_OLE::Asc2Ucs('Root Entry'), PHPExcel_Shared_OLE::OLE_PPS_TYPE_ROOT, null, null, null, $time_1st, $time_2nd, null, $raChild);
     }
 

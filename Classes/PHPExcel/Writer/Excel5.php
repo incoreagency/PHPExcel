@@ -91,6 +91,20 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
     private $documentSummaryInformation;
 
     /**
+     * Current workbook
+     *
+     * @var array
+     */
+    private $writerWorkbook;
+
+    /**
+     * Current workbooks
+     *
+     * @var array
+     */
+    private $writerWorksheets;
+
+    /**
      * Create a new PHPExcel_Writer_Excel5
      *
      * @param    PHPExcel    $phpExcel    PHPExcel object
@@ -113,6 +127,8 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
 
         // garbage collect
         $this->phpExcel->garbageCollect();
+
+        $this->writerWorksheets = [];
 
         $saveDebugLog = PHPExcel_Calculation::getInstance($this->phpExcel)->getDebugLog()->getWriteDebugLog();
         PHPExcel_Calculation::getInstance($this->phpExcel)->getDebugLog()->setWriteDebugLog(false);
