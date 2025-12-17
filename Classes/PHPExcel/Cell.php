@@ -91,7 +91,7 @@ class PHPExcel_Cell
     /**
      *    Send notification to the cache controller
      *
-     *    @return void
+     *    @return PHPExcel_Cell
      **/
     public function notifyCacheController()
     {
@@ -116,10 +116,10 @@ class PHPExcel_Cell
      *
      *    @param    mixed                $pValue
      *    @param    string                $pDataType
-     *    @param    PHPExcel_Worksheet    $pSheet
+     *    @param    PHPExcel_Worksheet|null    $pSheet
      *    @throws    PHPExcel_Exception
      */
-    public function __construct($pValue = null, $pDataType = null, PHPExcel_Worksheet $pSheet = null)
+    public function __construct($pValue = null, $pDataType = null, PHPExcel_Worksheet|null $pSheet = null)
     {
         // Initialise cell value
         $this->value = $pValue;
@@ -406,11 +406,11 @@ class PHPExcel_Cell
     /**
      *    Set Data validation rules
      *
-     *    @param    PHPExcel_Cell_DataValidation    $pDataValidation
+     *    @param    PHPExcel_Cell_DataValidation|null    $pDataValidation
      *    @return    PHPExcel_Cell
      *    @throws    PHPExcel_Exception
      */
-    public function setDataValidation(PHPExcel_Cell_DataValidation $pDataValidation = null)
+    public function setDataValidation(PHPExcel_Cell_DataValidation|null $pDataValidation = null)
     {
         if (!isset($this->parent)) {
             throw new PHPExcel_Exception('Cannot set data validation for cell that is not bound to a worksheet');
@@ -454,11 +454,11 @@ class PHPExcel_Cell
     /**
      *    Set Hyperlink
      *
-     *    @param    PHPExcel_Cell_Hyperlink    $pHyperlink
+     *    @param    PHPExcel_Cell_Hyperlink|null    $pHyperlink
      *    @return    PHPExcel_Cell
      *    @throws    PHPExcel_Exception
      */
-    public function setHyperlink(PHPExcel_Cell_Hyperlink $pHyperlink = null)
+    public function setHyperlink(PHPExcel_Cell_Hyperlink|null $pHyperlink = null)
     {
         if (!isset($this->parent)) {
             throw new PHPExcel_Exception('Cannot set hyperlink for cell that is not bound to a worksheet');
@@ -953,10 +953,10 @@ class PHPExcel_Cell
     /**
      * Set value binder to use
      *
-     * @param PHPExcel_Cell_IValueBinder $binder
+     * @param PHPExcel_Cell_IValueBinder|null $binder
      * @throws PHPExcel_Exception
      */
-    public static function setValueBinder(PHPExcel_Cell_IValueBinder $binder = null)
+    public static function setValueBinder(PHPExcel_Cell_IValueBinder|null $binder = null)
     {
         if ($binder === null) {
             throw new PHPExcel_Exception("A PHPExcel_Cell_IValueBinder is required for PHPExcel to function correctly.");

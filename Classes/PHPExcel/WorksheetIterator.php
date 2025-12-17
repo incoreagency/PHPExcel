@@ -44,9 +44,9 @@ class PHPExcel_WorksheetIterator implements Iterator
     /**
      * Create a new worksheet iterator
      *
-     * @param PHPExcel         $subject
+     * @param PHPExcel|null         $subject
      */
-    public function __construct(PHPExcel $subject = null)
+    public function __construct(PHPExcel|null $subject = null)
     {
         // Set subject
         $this->subject = $subject;

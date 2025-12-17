@@ -327,10 +327,10 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     /**
      * Create a new worksheet
      *
-     * @param PHPExcel        $pParent
+     * @param PHPExcel|null        $pParent
      * @param string        $pTitle
      */
-    public function __construct(PHPExcel $pParent = null, $pTitle = 'Worksheet')
+    public function __construct(PHPExcel|null $pParent = null, $pTitle = 'Worksheet')
     {
         // Set parent and title
         $this->parent = $pParent;
@@ -553,11 +553,11 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
     /**
      * Add chart
      *
-     * @param PHPExcel_Chart $pChart
+     * @param PHPExcel_Chart|null $pChart
      * @param int|null $iChartIndex Index where chart should go (0,1,..., or null for last)
      * @return PHPExcel_Chart
      */
-    public function addChart(PHPExcel_Chart $pChart = null, $iChartIndex = null)
+    public function addChart(PHPExcel_Chart|null $pChart = null, $iChartIndex = null)
     {
         $pChart->setWorksheet($this);
         if (is_null($iChartIndex)) {
@@ -1505,12 +1505,12 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
      * Please note that this will overwrite existing cell styles for cells in range!
      *
      * @deprecated
-     * @param PHPExcel_Style $pSharedCellStyle Cell style to share
+     * @param PHPExcel_Style|null $pSharedCellStyle Cell style to share
      * @param string $pRange Range of cells (i.e. "A1:B10"), or just one cell (i.e. "A1")
      * @throws PHPExcel_Exception
      * @return PHPExcel_Worksheet
      */
-    public function setSharedStyle(PHPExcel_Style $pSharedCellStyle = null, $pRange = '')
+    public function setSharedStyle(PHPExcel_Style|null $pSharedCellStyle = null, $pRange = '')
     {
         $this->duplicateStyle($pSharedCellStyle, $pRange);
         return $this;
@@ -1521,12 +1521,12 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
      *
      * Please note that this will overwrite existing cell styles for cells in range!
      *
-     * @param PHPExcel_Style $pCellStyle Cell style to duplicate
+     * @param PHPExcel_Style|null $pCellStyle Cell style to duplicate
      * @param string $pRange Range of cells (i.e. "A1:B10"), or just one cell (i.e. "A1")
      * @throws PHPExcel_Exception
      * @return PHPExcel_Worksheet
      */
-    public function duplicateStyle(PHPExcel_Style $pCellStyle = null, $pRange = '')
+    public function duplicateStyle(PHPExcel_Style|null $pCellStyle = null, $pRange = '')
     {
         // make sure we have a real style and not supervisor
         $style = $pCellStyle->getIsSupervisor() ? $pCellStyle->getSharedComponent() : $pCellStyle;
@@ -1567,12 +1567,12 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
      *
      * Please note that this will overwrite existing cell styles for cells in range!
      *
-     * @param    array of PHPExcel_Style_Conditional    $pCellStyle    Cell style to duplicate
+     * @param    null|array of PHPExcel_Style_Conditional    $pCellStyle    Cell style to duplicate
      * @param string $pRange Range of cells (i.e. "A1:B10"), or just one cell (i.e. "A1")
      * @throws PHPExcel_Exception
      * @return PHPExcel_Worksheet
      */
-    public function duplicateConditionalStyle(array $pCellStyle = null, $pRange = '')
+    public function duplicateConditionalStyle(array|null $pCellStyle = null, $pRange = '')
     {
         foreach ($pCellStyle as $cellStyle) {
             if (!($cellStyle instanceof PHPExcel_Style_Conditional)) {
@@ -2696,10 +2696,10 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
      * Set hyperlnk
      *
      * @param string $pCellCoordinate    Cell coordinate to insert hyperlink
-     * @param    PHPExcel_Cell_Hyperlink    $pHyperlink
+     * @param    PHPExcel_Cell_Hyperlink|null    $pHyperlink
      * @return PHPExcel_Worksheet
      */
-    public function setHyperlink($pCellCoordinate = 'A1', PHPExcel_Cell_Hyperlink $pHyperlink = null)
+    public function setHyperlink($pCellCoordinate = 'A1', PHPExcel_Cell_Hyperlink|null $pHyperlink = null)
     {
         if ($pHyperlink === null) {
             unset($this->hyperlinkCollection[$pCellCoordinate]);
@@ -2751,10 +2751,10 @@ class PHPExcel_Worksheet implements PHPExcel_IComparable
      * Set data validation
      *
      * @param string $pCellCoordinate    Cell coordinate to insert data validation
-     * @param    PHPExcel_Cell_DataValidation    $pDataValidation
+     * @param    PHPExcel_Cell_DataValidation|null    $pDataValidation
      * @return PHPExcel_Worksheet
      */
-    public function setDataValidation($pCellCoordinate = 'A1', PHPExcel_Cell_DataValidation $pDataValidation = null)
+    public function setDataValidation($pCellCoordinate = 'A1', PHPExcel_Cell_DataValidation|null $pDataValidation = null)
     {
         if ($pDataValidation === null) {
             unset($this->dataValidationCollection[$pCellCoordinate]);
