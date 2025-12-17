@@ -180,7 +180,7 @@ class PHPExcel_Calculation
      * An array of the nested cell references accessed by the calculation engine, used for the debug log
      *
      * @access    private
-     * @var array of string
+     * @var PHPExcel_CalcEngine_CyclicReferenceStack array of string
      *
      */
     private $cyclicReferenceStack;
@@ -2068,7 +2068,7 @@ class PHPExcel_Calculation
     );
 
 
-    public function __construct(PHPExcel $workbook = null)
+    public function __construct(PHPExcel|null $workbook = null)
     {
         $this->delta = 1 * pow(10, 0 - ini_get('precision'));
 
@@ -2093,11 +2093,11 @@ class PHPExcel_Calculation
      * Get an instance of this class
      *
      * @access    public
-     * @param   PHPExcel $workbook  Injected workbook for working with a PHPExcel object,
+     * @param   PHPExcel|null $workbook  Injected workbook for working with a PHPExcel object,
      *                                    or NULL to create a standalone claculation engine
      * @return PHPExcel_Calculation
      */
-    public static function getInstance(PHPExcel $workbook = null)
+    public static function getInstance(PHPExcel|null $workbook = null)
     {
         if ($workbook !== null) {
             $instance = $workbook->getCalculationEngine();
