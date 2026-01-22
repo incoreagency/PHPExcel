@@ -3,10 +3,12 @@
 
 require_once 'testDataFileIterator.php';
 
-class CellTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class CellTest extends TestCase
 {
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');

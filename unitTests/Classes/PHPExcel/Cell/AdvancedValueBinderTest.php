@@ -1,8 +1,10 @@
 <?php
 
-class AdvancedValueBinderTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class AdvancedValueBinderTest extends TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');

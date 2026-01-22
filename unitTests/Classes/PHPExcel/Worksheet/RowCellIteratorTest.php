@@ -1,11 +1,13 @@
 <?php
 
-class RowCellIteratorTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class RowCellIteratorTest extends TestCase
 {
     public $mockWorksheet;
     public $mockRowCell;
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
@@ -18,14 +20,13 @@ class RowCellIteratorTest extends PHPUnit_Framework_TestCase
 
         $this->mockWorksheet = $this->getMockBuilder('PHPExcel_Worksheet')
             ->disableOriginalConstructor()
+            ->onlyMethods(['getHighestColumn', 'getCellByColumnAndRow', 'disconnectCells'])
             ->getMock();
-
-        $this->mockWorksheet->expects($this->any())
-                 ->method('getHighestColumn')
+        $this->mockWorksheet->method('getHighestColumn')
                  ->will($this->returnValue('E'));
-        $this->mockWorksheet->expects($this->any())
-                 ->method('getCellByColumnAndRow')
+        $this->mockWorksheet->method('getCellByColumnAndRow')
                  ->will($this->returnValue($this->mockCell));
+        $this->mockWorksheet->method('disconnectCells')->willReturn(null);
     }
 
 

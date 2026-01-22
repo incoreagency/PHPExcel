@@ -1,14 +1,16 @@
 <?php
 
 
-class AutoFilterTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class AutoFilterTest extends TestCase
 {
     private $_testInitialRange = 'H2:O256';
 
     private $_testAutoFilterObject;
 
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
@@ -17,7 +19,9 @@ class AutoFilterTest extends PHPUnit_Framework_TestCase
 
         $this->_mockWorksheetObject = $this->getMockBuilder('PHPExcel_Worksheet')
             ->disableOriginalConstructor()
+            ->onlyMethods(['getCellCacheController', 'disconnectCells'])
             ->getMock();
+        $this->_mockWorksheetObject->method('disconnectCells')->willReturn(null);
         $this->_mockCacheController = $this->getMockBuilder('PHPExcel_CachedObjectStorage_Memory')
             ->disableOriginalConstructor()
             ->getMock();
