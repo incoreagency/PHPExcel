@@ -646,25 +646,25 @@ class EngineeringTest extends TestCase
     public function testGetConversionGroups()
     {
         $result = PHPExcel_Calculation_Engineering::getConversionGroups();
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
     }
 
     public function testGetConversionGroupUnits()
     {
         $result = PHPExcel_Calculation_Engineering::getConversionGroupUnits();
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
     }
 
     public function testGetConversionGroupUnitDetails()
     {
         $result = PHPExcel_Calculation_Engineering::getConversionGroupUnitDetails();
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
     }
 
     public function testGetConversionMultipliers()
     {
         $result = PHPExcel_Calculation_Engineering::getConversionMultipliers();
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
     }
 
     /**

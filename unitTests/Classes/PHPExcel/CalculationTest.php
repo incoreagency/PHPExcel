@@ -30,7 +30,7 @@ class CalculationTest extends TestCase
         $this->assertEquals($expectedResultOpenOffice, $resultOpenOffice, 'should be OpenOffice compatible');
     }
 
-    public function providerBinaryComparisonOperation()
+    public static function providerBinaryComparisonOperation()
     {
         return new testDataFileIterator('rawTestData/CalculationBinaryComparisonOperation.data');
     }

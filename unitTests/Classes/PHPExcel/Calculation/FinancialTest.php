@@ -26,10 +26,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','ACCRINT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerACCRINT()
+    public static function providerACCRINT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/ACCRINT.data');
     }
@@ -42,10 +42,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','ACCRINTM'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerACCRINTM()
+    public static function providerACCRINTM()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/ACCRINTM.data');
     }
@@ -58,10 +58,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','AMORDEGRC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerAMORDEGRC()
+    public static function providerAMORDEGRC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/AMORDEGRC.data');
     }
@@ -74,10 +74,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','AMORLINC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerAMORLINC()
+    public static function providerAMORLINC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/AMORLINC.data');
     }
@@ -90,10 +90,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPDAYBS'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerCOUPDAYBS()
+    public static function providerCOUPDAYBS()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPDAYBS.data');
     }
@@ -106,10 +106,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPDAYS'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerCOUPDAYS()
+    public static function providerCOUPDAYS()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPDAYS.data');
     }
@@ -122,10 +122,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPDAYSNC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerCOUPDAYSNC()
+    public static function providerCOUPDAYSNC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPDAYSNC.data');
     }
@@ -138,10 +138,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPNCD'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerCOUPNCD()
+    public static function providerCOUPNCD()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPNCD.data');
     }
@@ -154,10 +154,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPNUM'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerCOUPNUM()
+    public static function providerCOUPNUM()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPNUM.data');
     }
@@ -170,10 +170,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPPCD'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerCOUPPCD()
+    public static function providerCOUPPCD()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/COUPPCD.data');
     }
@@ -186,10 +186,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','CUMIPMT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerCUMIPMT()
+    public static function providerCUMIPMT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/CUMIPMT.data');
     }
@@ -202,10 +202,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','CUMPRINC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerCUMPRINC()
+    public static function providerCUMPRINC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/CUMPRINC.data');
     }
@@ -218,10 +218,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','DB'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerDB()
+    public static function providerDB()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/DB.data');
     }
@@ -234,10 +234,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','DDB'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerDDB()
+    public static function providerDDB()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/DDB.data');
     }
@@ -250,10 +250,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','DISC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerDISC()
+    public static function providerDISC()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/DISC.data');
     }
@@ -266,10 +266,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','DOLLARDE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerDOLLARDE()
+    public static function providerDOLLARDE()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/DOLLARDE.data');
     }
@@ -282,10 +282,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','DOLLARFR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerDOLLARFR()
+    public static function providerDOLLARFR()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/DOLLARFR.data');
     }
@@ -298,10 +298,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','EFFECT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerEFFECT()
+    public static function providerEFFECT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/EFFECT.data');
     }
@@ -314,10 +314,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','FV'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerFV()
+    public static function providerFV()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/FV.data');
     }
@@ -330,10 +330,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','FVSCHEDULE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerFVSCHEDULE()
+    public static function providerFVSCHEDULE()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/FVSCHEDULE.data');
     }
@@ -346,10 +346,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','INTRATE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerINTRATE()
+    public static function providerINTRATE()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/INTRATE.data');
     }
@@ -362,10 +362,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','IPMT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerIPMT()
+    public static function providerIPMT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/IPMT.data');
     }
@@ -378,10 +378,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','IRR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerIRR()
+    public static function providerIRR()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/IRR.data');
     }
@@ -394,10 +394,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','ISPMT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerISPMT()
+    public static function providerISPMT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/ISPMT.data');
     }
@@ -410,10 +410,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','MIRR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerMIRR()
+    public static function providerMIRR()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/MIRR.data');
     }
@@ -426,10 +426,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','NOMINAL'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerNOMINAL()
+    public static function providerNOMINAL()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/NOMINAL.data');
     }
@@ -442,10 +442,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','NPER'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerNPER()
+    public static function providerNPER()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/NPER.data');
     }
@@ -458,10 +458,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','NPV'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerNPV()
+    public static function providerNPV()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/NPV.data');
     }
@@ -474,10 +474,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','PRICE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerPRICE()
+    public static function providerPRICE()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/PRICE.data');
     }
@@ -490,10 +490,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','RATE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerRATE()
+    public static function providerRATE()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/RATE.data');
     }
@@ -506,10 +506,10 @@ class FinancialTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_Financial','XIRR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
-    public function providerXIRR()
+    public static function providerXIRR()
     {
         return new testDataFileIterator('rawTestData/Calculation/Financial/XIRR.data');
     }

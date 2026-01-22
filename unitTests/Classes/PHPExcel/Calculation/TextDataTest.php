@@ -29,7 +29,7 @@ class TextDataTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCHAR()
+    public static function providerCHAR()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/CHAR.data');
     }
@@ -45,7 +45,7 @@ class TextDataTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCODE()
+    public static function providerCODE()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/CODE.data');
     }
@@ -61,7 +61,7 @@ class TextDataTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerCONCATENATE()
+    public static function providerCONCATENATE()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/CONCATENATE.data');
     }
@@ -77,7 +77,7 @@ class TextDataTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerLEFT()
+    public static function providerLEFT()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/LEFT.data');
     }
@@ -93,7 +93,7 @@ class TextDataTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerMID()
+    public static function providerMID()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/MID.data');
     }
@@ -109,7 +109,7 @@ class TextDataTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerRIGHT()
+    public static function providerRIGHT()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/RIGHT.data');
     }
@@ -125,7 +125,7 @@ class TextDataTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerLOWER()
+    public static function providerLOWER()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/LOWER.data');
     }
@@ -141,7 +141,7 @@ class TextDataTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerUPPER()
+    public static function providerUPPER()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/UPPER.data');
     }
@@ -157,7 +157,7 @@ class TextDataTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerPROPER()
+    public static function providerPROPER()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/PROPER.data');
     }
@@ -173,7 +173,7 @@ class TextDataTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerLEN()
+    public static function providerLEN()
     {
         return new testDataFileIterator('rawTestData/Calculation/TextData/LEN.data');
     }

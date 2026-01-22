@@ -18,11 +18,8 @@ class RuleTest extends TestCase
 
         $this->_mockAutoFilterColumnObject = $this->getMockBuilder('PHPExcel_Worksheet_AutoFilter_Column')
             ->disableOriginalConstructor()
+            ->onlyMethods([])
             ->getMock();
-
-        $this->_mockAutoFilterColumnObject->expects($this->any())
-            ->method('testColumnInRange')
-            ->will($this->returnValue(3));
 
         $this->_testAutoFilterRuleObject = new PHPExcel_Worksheet_AutoFilter_Column_Rule(
             $this->_mockAutoFilterColumnObject

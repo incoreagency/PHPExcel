@@ -17,7 +17,7 @@ class DataTypeTest extends TestCase
     public function testGetErrorCodes()
     {
         $result = call_user_func(array('PHPExcel_Cell_DataType','getErrorCodes'));
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertGreaterThan(0, count($result));
         $this->assertArrayHasKey('#NULL!', $result);
     }

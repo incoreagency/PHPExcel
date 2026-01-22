@@ -27,7 +27,7 @@ class PasswordHasherTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerHashPassword()
+    public static function providerHashPassword()
     {
         return new testDataFileIterator('rawTestData/Shared/PasswordHashes.data');
     }

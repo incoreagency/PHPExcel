@@ -67,28 +67,25 @@ class ColumnIteratorTest extends TestCase
         }
     }
 
-    /**
-     * @expectedException PHPExcel_Exception
-     */
     public function testStartOutOfRange()
     {
+        $this->expectException(PHPExcel_Exception::class);
+
         $iterator = new PHPExcel_Worksheet_ColumnIterator($this->mockWorksheet, 'IA', 'IV');
     }
 
-    /**
-     * @expectedException PHPExcel_Exception
-     */
     public function testSeekOutOfRange()
     {
+        $this->expectException(PHPExcel_Exception::class);
+
         $iterator = new PHPExcel_Worksheet_ColumnIterator($this->mockWorksheet, 'B', 'D');
         $iterator->seek('A');
     }
 
-    /**
-     * @expectedException PHPExcel_Exception
-     */
     public function testPrevOutOfRange()
     {
+        $this->expectException(PHPExcel_Exception::class);
+
         $iterator = new PHPExcel_Worksheet_ColumnIterator($this->mockWorksheet, 'B', 'D');
         $iterator->prev();
     }

@@ -69,20 +69,18 @@ class RowCellIteratorTest extends TestCase
         }
     }
 
-    /**
-     * @expectedException PHPExcel_Exception
-     */
     public function testSeekOutOfRange()
     {
+        $this->expectException(PHPExcel_Exception::class);
+
         $iterator = new PHPExcel_Worksheet_RowCellIterator($this->mockWorksheet, 2, 'B', 'D');
         $iterator->seek(1);
     }
 
-    /**
-     * @expectedException PHPExcel_Exception
-     */
     public function testPrevOutOfRange()
     {
+        $this->expectException(PHPExcel_Exception::class);
+        
         $iterator = new PHPExcel_Worksheet_RowCellIterator($this->mockWorksheet, 2, 'B', 'D');
         $iterator->prev();
     }

@@ -41,7 +41,7 @@ class LogicalTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerAND()
+    public static function providerAND()
     {
         return new testDataFileIterator('rawTestData/Calculation/Logical/AND.data');
     }
@@ -57,7 +57,7 @@ class LogicalTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerOR()
+    public static function providerOR()
     {
         return new testDataFileIterator('rawTestData/Calculation/Logical/OR.data');
     }
@@ -73,7 +73,7 @@ class LogicalTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerNOT()
+    public static function providerNOT()
     {
         return new testDataFileIterator('rawTestData/Calculation/Logical/NOT.data');
     }
@@ -89,7 +89,7 @@ class LogicalTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIF()
+    public static function providerIF()
     {
         return new testDataFileIterator('rawTestData/Calculation/Logical/IF.data');
     }
@@ -105,7 +105,7 @@ class LogicalTest extends TestCase
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function providerIFERROR()
+    public static function providerIFERROR()
     {
         return new testDataFileIterator('rawTestData/Calculation/Logical/IFERROR.data');
     }

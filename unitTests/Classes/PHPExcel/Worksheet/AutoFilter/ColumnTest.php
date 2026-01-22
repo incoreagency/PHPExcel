@@ -78,11 +78,10 @@ class AutofilterColumnTest extends TestCase
         $this->assertEquals(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_FILTERTYPE_DYNAMICFILTER, $result);
     }
 
-    /**
-     * @expectedException PHPExcel_Exception
-     */
     public function testSetInvalidFilterTypeThrowsException()
     {
+        $this->expectException(PHPExcel_Exception::class);
+        
         $expectedResult = 'Unfiltered';
 
         $result = $this->_testAutoFilterColumnObject->setFilterType($expectedResult);
@@ -103,11 +102,10 @@ class AutofilterColumnTest extends TestCase
         $this->assertEquals(PHPExcel_Worksheet_AutoFilter_Column::AUTOFILTER_COLUMN_JOIN_AND, $result);
     }
 
-    /**
-     * @expectedException PHPExcel_Exception
-     */
     public function testSetInvalidJoinThrowsException()
     {
+        $this->expectException(PHPExcel_Exception::class);
+
         $expectedResult = 'Neither';
 
         $result = $this->_testAutoFilterColumnObject->setJoin($expectedResult);
