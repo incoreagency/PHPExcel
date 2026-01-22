@@ -510,7 +510,7 @@ class PHPExcel
      * @return PHPExcel_Worksheet
      * @throws PHPExcel_Exception
      */
-    public function addSheet(PHPExcel_Worksheet $pSheet, $iSheetIndex = null)
+    public function addSheet(?PHPExcel_Worksheet $pSheet, $iSheetIndex = null)
     {
         if ($this->sheetNameExists($pSheet->getTitle())) {
             throw new PHPExcel_Exception(
@@ -742,7 +742,7 @@ class PHPExcel
      * @throws PHPExcel_Exception
      * @return PHPExcel_Worksheet
      */
-    public function addExternalSheet(PHPExcel_Worksheet $pSheet, $iSheetIndex = null)
+    public function addExternalSheet(?PHPExcel_Worksheet $pSheet, $iSheetIndex = null)
     {
         if ($this->sheetNameExists($pSheet->getTitle())) {
             throw new PHPExcel_Exception("Workbook already contains a worksheet named '{$pSheet->getTitle()}'. Rename the external sheet first.");
