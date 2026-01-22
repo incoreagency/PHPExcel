@@ -57,7 +57,7 @@ class PHPExcel_Worksheet_AutoFilter
      *    @param    string        $pRange        Cell range (i.e. A1:E10)
      * @param PHPExcel_Worksheet $pSheet
      */
-    public function __construct($pRange = '', PHPExcel_Worksheet $pSheet = null)
+    public function __construct($pRange = '', ?PHPExcel_Worksheet $pSheet = null)
     {
         $this->range = $pRange;
         $this->workSheet = $pSheet;
@@ -581,7 +581,8 @@ class PHPExcel_Worksheet_AutoFilter
             sort($dataValues);
         }
 
-        return array_pop(array_slice($dataValues, 0, $ruleValue));
+        $slice = array_slice($dataValues, 0, $ruleValue);
+        return array_pop($slice);
     }
 
     /**
