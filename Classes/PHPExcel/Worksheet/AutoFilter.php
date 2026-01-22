@@ -79,7 +79,7 @@ class PHPExcel_Worksheet_AutoFilter
      * @param PHPExcel_Worksheet $pSheet
      * @return PHPExcel_Worksheet_AutoFilter
      */
-    public function setParent(PHPExcel_Worksheet $pSheet = null)
+    public function setParent(?PHPExcel_Worksheet $pSheet = null)
     {
         $this->workSheet = $pSheet;
 
