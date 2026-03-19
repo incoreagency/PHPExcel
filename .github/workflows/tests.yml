@@ -1,0 +1,25 @@
+name: PHP Unit Tests
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, xml, xmlwriter, zip, gd
+
+      - name: Download PHPUnit
+        run: curl -sSL https://phar.phpunit.de/phpunit-8.5.phar -o phpunit.phar
+
+      - name: Run tests
+        working-directory: unitTests
+        run: php ../phpunit.phar
