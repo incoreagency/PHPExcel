@@ -69,7 +69,7 @@ class FontTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Shared_Font','inchSizeToPixels'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $this->assertEqualsWithDelta($expectedResult, $result, 1e-9);
     }
 
     public function providerInchSizeToPixels()

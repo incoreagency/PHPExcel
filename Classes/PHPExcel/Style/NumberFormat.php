@@ -724,7 +724,15 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
                         } else {
                             if (preg_match('/[0#]E[+-]0/i', $format)) {
                                 //    Scientific format
-                                $value = sprintf('%5.2E', $value);
+                                preg_match('/E[+-](0+)/i', $format, $expMatch);
+                                $expDigits = isset($expMatch[1]) ? strlen($expMatch[1]) : 2;
+                                $value = sprintf('%.' . strlen($right) . 'E', $value);
+                                // Normalize: remove + from positive exponent, zero-pad exponent
+                                $value = preg_replace_callback('/E([+-])(\d+)/i', function ($expM) use ($expDigits) {
+                                    $sign = $expM[1] === '-' ? '-' : '';
+                                    $exp = str_pad($expM[2], $expDigits, '0', STR_PAD_LEFT);
+                                    return 'E' . $sign . $exp;
+                                }, $value);
                             } elseif (preg_match('/0([^\d\.]+)0/', $format)) {
                                 $value = self::complexNumberFormatMask($value, $format);
                             } else {

@@ -282,7 +282,7 @@ class MathTrigTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_MathTrig','MINVERSE'), $args);
-        $this->assertEquals($expectedResult, $result, '', 1E-12);
+        $this->assertEqualsWithDelta($expectedResult, $result, 1E-12);
     }
 
     public function providerMINVERSE()
@@ -298,7 +298,7 @@ class MathTrigTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_MathTrig','MMULT'), $args);
-        $this->assertEquals($expectedResult, $result, '', 1E-12);
+        $this->assertEqualsWithDelta($expectedResult, $result, 1E-12);
     }
 
     public function providerMMULT()

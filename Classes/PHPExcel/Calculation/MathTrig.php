@@ -601,7 +601,7 @@ class PHPExcel_Calculation_MathTrig
                 if ((is_string($matrixCell)) || ($matrixCell === null)) {
                     return PHPExcel_Calculation_Functions::VALUE();
                 }
-                $matrixData[$column][$row] = $matrixCell;
+                $matrixData[$row][$column] = $matrixCell;
                 ++$column;
             }
             if ($maxColumn === 0) {
@@ -681,7 +681,6 @@ class PHPExcel_Calculation_MathTrig
 
             return $matrixA->times($matrixB)->getArray();
         } catch (PHPExcel_Exception $ex) {
-            var_dump($ex->getMessage());
             return PHPExcel_Calculation_Functions::VALUE();
         }
     }

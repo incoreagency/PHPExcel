@@ -382,6 +382,7 @@ class PHPExcel_Calculation_TextData
             $value = ($value) ? PHPExcel_Calculation::getTRUE() : PHPExcel_Calculation::getFALSE();
         }
 
+        $chars = ($chars === null) ? 0 : (int) $chars;
         if (function_exists('mb_substr')) {
             return mb_substr($value, --$start, $chars, 'UTF-8');
         } else {
