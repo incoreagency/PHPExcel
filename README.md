@@ -1,8 +1,12 @@
-# PHPExcel - DEAD
+# PHPExcel - revived for PHP 8.4
 
 PHPExcel last version, 1.8.1, was released in 2015. The project was officially deprecated in 2017 and permanently archived in 2019.
 
-The project has not be maintained for years and must not be used anymore. **All users must migrate** to its direct successor [PhpSpreadsheet](https://github.com/PHPOffice/PhpSpreadsheet), or another alternative.
+The project was taken, fixed, updated and is ready to be used in PHP 8.1, 8.2, 8.3 and 8.4.
+
+## Testing
+
+Use PHPUnit 8.x for tests.
 
 ## License
 

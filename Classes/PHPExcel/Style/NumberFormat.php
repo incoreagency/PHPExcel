@@ -689,6 +689,17 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
                     // scale number
                     $value = $value / $scale;
 
+                    // Count trailing optional decimal positions (# chars) before replacing # with 0
+                    $trailingOptionalDecimals = 0;
+                    if (strpos($format, '.') !== false) {
+                        $tmpFormat = preg_replace("/\[[^\]]+\]/", '', $format);
+                        $fmtParts = explode('.', $tmpFormat);
+                        if (isset($fmtParts[1])) {
+                            $rightMask = $fmtParts[1];
+                            $trailingOptionalDecimals = strlen($rightMask) - strlen(rtrim($rightMask, '#'));
+                        }
+                    }
+
                     // Strip #
                     $format = preg_replace('/\\#/', '0', $format);
 
@@ -719,6 +730,17 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
                             } else {
                                 $sprintf_pattern = "%0$minWidth." . strlen($right) . "f";
                                 $value = sprintf($sprintf_pattern, $value);
+                                // Strip trailing zeros for optional decimal positions (#)
+                                if ($trailingOptionalDecimals > 0 && strpos($value, '.') !== false) {
+                                    for ($i = 0; $i < $trailingOptionalDecimals; $i++) {
+                                        if (substr($value, -1) === '0') {
+                                            $value = substr($value, 0, -1);
+                                        }
+                                    }
+                                    if (substr($value, -1) === '.') {
+                                        $value = substr($value, 0, -1);
+                                    }
+                                }
                                 $value = preg_replace($number_regex, $value, $format);
                             }
                         }

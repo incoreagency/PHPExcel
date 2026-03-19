@@ -53,15 +53,36 @@ class PHPExcel_Shared_PasswordHasher
         // split the plain text password in its component characters
         $chars = preg_split('//', $pPassword, -1, PREG_SPLIT_NO_EMPTY);
         foreach ($chars as $char) {
-            $value            = ord($char) << $charPos++;    // shifted ASCII value
-            $rotated_bits    = $value >> 15;                // rotated bits beyond bit 15
+            // Emulate 32-bit signed integer arithmetic to match Excel/32-bit PHP behaviour.
+            // Shifts >= 32 bits produce 0 (undefined in C, conventionally 0 on most platforms).
+            if ($charPos < 32) {
+                $value = self::toInt32(ord($char) << $charPos);
+            } else {
+                $value = 0;
+            }
+            $charPos++;
+            $rotated_bits    = ($value >> 15) & 0x1FFFF;   // rotated bits beyond bit 15
             $value            &= 0x7fff;                    // first 15 bits
-            $password        ^= ($value | $rotated_bits);
+            $password        = self::toInt32($password ^ ($value | $rotated_bits));
         }
 
-        $password ^= strlen($pPassword);
-        $password ^= 0xCE4B;
+        $password = self::toInt32($password ^ strlen($pPassword));
+        $password = self::toInt32($password ^ 0xCE4B);
 
-        return(strtoupper(dechex($password)));
+        // Convert to unsigned hex, matching 32-bit PHP dechex() behaviour for negative values
+        $unsigned = ($password < 0) ? $password + 0x100000000 : $password;
+        return strtoupper(dechex((int) $unsigned));
+    }
+
+    /**
+     * Truncate a value to a signed 32-bit integer, matching 32-bit PHP/C behaviour.
+     */
+    private static function toInt32($n)
+    {
+        $n = (int) ($n & 0xFFFFFFFF);
+        if ($n >= 0x80000000) {
+            $n -= 0x100000000;
+        }
+        return $n;
     }
 }

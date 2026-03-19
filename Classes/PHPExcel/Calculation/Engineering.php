@@ -834,6 +834,10 @@ class PHPExcel_Calculation_Engineering
     private static function nbrConversionFormat($xVal, $places)
     {
         if (!is_null($places)) {
+            if (!is_numeric($places)) {
+                return PHPExcel_Calculation_Functions::VALUE();
+            }
+            $places = (int) $places;
             if (strlen($xVal) <= $places) {
                 return substr(str_pad($xVal, $places, '0', STR_PAD_LEFT), -10);
             } else {
@@ -888,7 +892,18 @@ class PHPExcel_Calculation_Engineering
                 $f_2_PI = 2 * M_PI;
 
                 $fXAbs = abs($x);
-                $fResult = exp($fXAbs) / sqrt($f_2_PI * $fXAbs);
+                // Asymptotic expansion: I_n(x) ~ exp(x)/sqrt(2*pi*x) * sum_k (-1)^k * a_k
+                $mu = 4.0 * $ord * $ord;
+                $fSum = 1.0;
+                $term = 1.0;
+                for ($k = 1; $k <= 30; ++$k) {
+                    $term *= -($mu - (2 * $k - 1) * (2 * $k - 1)) / ($k * 8.0 * $fXAbs);
+                    $fSum += $term;
+                    if (abs($term) < 1e-15) {
+                        break;
+                    }
+                }
+                $fResult = exp($fXAbs) / sqrt($f_2_PI * $fXAbs) * $fSum;
                 if (($ord & 1) && ($x < 0)) {
                     $fResult = -$fResult;
                 }
@@ -943,7 +958,26 @@ class PHPExcel_Calculation_Engineering
                 $f_PI_DIV_4 = M_PI / 4;
 
                 $fXAbs = abs($x);
-                $fResult = sqrt(M_2DIVPI / $fXAbs) * cos($fXAbs - $ord * $f_PI_DIV_2 - $f_PI_DIV_4);
+                // Hankel asymptotic expansion: J_n(x) ~ sqrt(2/(pi*x)) * [P*cos(theta) - Q*sin(theta)]
+                // where theta = x - n*pi/2 - pi/4, using the standard P/Q series
+                $mu = 4.0 * $ord * $ord;
+                $fP = 1.0;
+                $fQ = 0.0;
+                $term = 1.0;
+                for ($k = 1; $k <= 30; ++$k) {
+                    $term *= ($mu - (2 * $k - 1) * (2 * $k - 1)) / ($k * 8.0 * $fXAbs);
+                    $sign = (intdiv($k, 2) % 2 === 0) ? 1.0 : -1.0;
+                    if ($k % 2 === 0) {
+                        $fP += $sign * $term;
+                    } else {
+                        $fQ += $sign * $term;
+                    }
+                    if (abs($term) < 1e-15) {
+                        break;
+                    }
+                }
+                $theta = $fXAbs - $ord * $f_PI_DIV_2 - $f_PI_DIV_4;
+                $fResult = sqrt(M_2DIVPI / $fXAbs) * ($fP * cos($theta) - $fQ * sin($theta));
                 if (($ord & 1) && ($x < 0)) {
                     $fResult = -$fResult;
                 }
@@ -1015,7 +1049,7 @@ class PHPExcel_Calculation_Engineering
         $ord    = (is_null($ord))    ? 0.0 :    PHPExcel_Calculation_Functions::flattenSingleValue($ord);
 
         if ((is_numeric($x)) && (is_numeric($ord))) {
-            if (($ord < 0) || ($x == 0.0)) {
+            if (($ord < 0) || ($x <= 0.0)) {
                 return PHPExcel_Calculation_Functions::NaN();
             }
 
@@ -1069,7 +1103,25 @@ class PHPExcel_Calculation_Engineering
                 (0.1020426050e6 + $y * (0.3549632885e3 + $y)))));
             $fRet = $f1 / $f2 + 0.636619772 * ( self::BESSELJ($fNum, 1) * log($fNum) - 1 / $fNum);
         } else {
-            $fRet = sqrt(0.636619772 / $fNum) * sin($fNum - 2.356194491);
+            // Hankel asymptotic expansion for Y_1(x)
+            $mu = 4.0;  // 4 * n² with n=1
+            $fP = 1.0;
+            $fQ = 0.0;
+            $term = 1.0;
+            for ($k = 1; $k <= 30; ++$k) {
+                $term *= ($mu - (2 * $k - 1) * (2 * $k - 1)) / ($k * 8.0 * $fNum);
+                $sign = (intdiv($k, 2) % 2 === 0) ? 1.0 : -1.0;
+                if ($k % 2 === 0) {
+                    $fP += $sign * $term;
+                } else {
+                    $fQ += $sign * $term;
+                }
+                if (abs($term) < 1e-15) {
+                    break;
+                }
+            }
+            $theta = $fNum - M_PI / 2 - M_PI / 4;
+            $fRet = sqrt(M_2DIVPI / $fNum) * ($fP * sin($theta) + $fQ * cos($theta));
         }
         return $fRet;
     }
@@ -1099,7 +1151,7 @@ class PHPExcel_Calculation_Engineering
         $ord    = (is_null($ord))    ? 0.0 :    PHPExcel_Calculation_Functions::flattenSingleValue($ord);
 
         if ((is_numeric($x)) && (is_numeric($ord))) {
-            if (($ord < 0) || ($x == 0.0)) {
+            if (($ord < 0) || ($x <= 0.0)) {
                 return PHPExcel_Calculation_Functions::NaN();
             }
 

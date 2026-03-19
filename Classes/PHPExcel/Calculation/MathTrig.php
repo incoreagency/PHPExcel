@@ -604,8 +604,10 @@ class PHPExcel_Calculation_MathTrig
                 $matrixData[$column][$row] = $matrixCell;
                 ++$column;
             }
-            if ($column > $maxColumn) {
+            if ($maxColumn === 0) {
                 $maxColumn = $column;
+            } elseif ($column !== $maxColumn) {
+                return PHPExcel_Calculation_Functions::VALUE();
             }
             ++$row;
         }

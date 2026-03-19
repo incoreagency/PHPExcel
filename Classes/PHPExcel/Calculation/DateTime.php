@@ -548,6 +548,18 @@ class PHPExcel_Calculation_DateTime
                 if (($PHPDateArray === false) || ($PHPDateArray['error_count'] > 0)) {
                     return PHPExcel_Calculation_Functions::VALUE();
                 }
+            } elseif (
+                is_numeric($testVal1) && (int)$testVal1 <= 31 &&
+                is_numeric($testVal3) && (int)$testVal3 <= 99 &&
+                $PHPDateArray['year'] !== false &&
+                ($PHPDateArray['year'] == (int)$testVal1 + 2000 || $PHPDateArray['year'] == (int)$testVal1 + 1900)
+            ) {
+                // PHP 8.4+ may treat the first all-numeric token as a 2-digit year (YY-MM-DD).
+                // If testVal1 was really a day and testVal3 the 2-digit year, try year-first format.
+                $alt = date_parse($testVal3.'-'.$testVal2.'-'.$testVal1);
+                if ($alt !== false && $alt['error_count'] == 0) {
+                    $PHPDateArray = $alt;
+                }
             }
         }
 

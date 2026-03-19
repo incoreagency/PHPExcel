@@ -37,10 +37,9 @@ class AdvancedValueBinderTest extends TestCase
      */
     public function testCurrency($value, $valueBinded, $format, $thousandsSeparator, $decimalSeparator, $currencyCode)
     {
-        $sheet = $this->getMock(
-            'PHPExcel_Worksheet',
-            array('getStyle', 'getNumberFormat', 'setFormatCode','getCellCacheController')
-        );
+        $sheet = $this->getMockBuilder('PHPExcel_Worksheet')
+            ->setMethods(array('getStyle', 'getNumberFormat', 'setFormatCode','getCellCacheController'))
+            ->getMock();
         $cache = $this->getMockBuilder('PHPExcel_CachedObjectStorage_Memory')
             ->disableOriginalConstructor()
             ->getMock();

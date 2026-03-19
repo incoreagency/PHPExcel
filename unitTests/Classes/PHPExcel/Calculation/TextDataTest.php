@@ -355,7 +355,7 @@ class TextDataTest extends TestCase
         $args = func_get_args();
         $expectedResult = array_pop($args);
         $result = call_user_func_array(array('PHPExcel_Calculation_TextData', 'VALUE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $this->assertEquals($expectedResult, $result, '', 1E-8);
     }
 
     public function providerVALUE()

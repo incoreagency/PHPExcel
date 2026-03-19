@@ -68,7 +68,7 @@ class testDataFileIterator implements Iterator
     private function _getcsv($input, $delimiter, $enclosure)
     {
         if (function_exists('str_getcsv')) {
-            return str_getcsv($input, $delimiter, $enclosure);
+            return str_getcsv($input, $delimiter, $enclosure, '');
         }
 
         $temp = fopen('php://memory', 'rw');
@@ -87,7 +87,7 @@ class testDataFileIterator implements Iterator
     private function _parseDataValue($dataValue)
     {
         //    discard any white space
-        $dataValue = trim($dataValue);
+        $dataValue = trim($dataValue ?? '');
         //    test for the required datatype and convert accordingly
         if (!is_numeric($dataValue)) {
             if ($dataValue == '') {

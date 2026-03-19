@@ -14,6 +14,8 @@ class StringTest extends TestCase
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
         require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+        // Reset cached currency code so getCurrencyCode() re-reads from locale
+        PHPExcel_Shared_String::setCurrencyCode(null);
     }
 
     public function testGetIsMbStringEnabled()

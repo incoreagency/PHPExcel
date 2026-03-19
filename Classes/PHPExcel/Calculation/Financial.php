@@ -2158,7 +2158,13 @@ class PHPExcel_Calculation_Financial
         $x2 = $guess;
         $f1 = self::XNPV($x1, $values, $dates);
         $f2 = self::XNPV($x2, $values, $dates);
+        if (!is_numeric($f1) || !is_numeric($f2)) {
+            return PHPExcel_Calculation_Functions::VALUE();
+        }
         for ($i = 0; $i < FINANCIAL_MAX_ITERATIONS; ++$i) {
+            if (!is_numeric($f1) || !is_numeric($f2)) {
+                return PHPExcel_Calculation_Functions::VALUE();
+            }
             if (($f1 * $f2) < 0.0) {
                 break;
             } elseif (abs($f1) < abs($f2)) {
@@ -2167,7 +2173,7 @@ class PHPExcel_Calculation_Financial
                 $f2 = self::XNPV($x2 += 1.6 * ($x2 - $x1), $values, $dates);
             }
         }
-        if (($f1 * $f2) > 0.0) {
+        if (!is_numeric($f1) || !is_numeric($f2) || ($f1 * $f2) > 0.0) {
             return PHPExcel_Calculation_Functions::VALUE();
         }
 
@@ -2238,7 +2244,11 @@ class PHPExcel_Calculation_Financial
             if (!is_numeric($values[$i])) {
                 return PHPExcel_Calculation_Functions::VALUE();
             }
-            $xnpv += $values[$i] / pow(1 + $rate, PHPExcel_Calculation_DateTime::DATEDIF($dates[0], $dates[$i], 'd') / 365);
+            $daysDiff = PHPExcel_Calculation_DateTime::DATEDIF($dates[0], $dates[$i], 'd');
+            if (!is_numeric($daysDiff)) {
+                return PHPExcel_Calculation_Functions::VALUE();
+            }
+            $xnpv += $values[$i] / pow(1 + $rate, $daysDiff / 365);
         }
         return (is_finite($xnpv)) ? $xnpv : PHPExcel_Calculation_Functions::VALUE();
     }
