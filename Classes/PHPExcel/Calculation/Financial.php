@@ -2244,6 +2244,10 @@ class PHPExcel_Calculation_Financial
             if (!is_numeric($values[$i])) {
                 return PHPExcel_Calculation_Functions::VALUE();
             }
+            if ($i === 0) {
+                $xnpv += $values[$i];
+                continue;
+            }
             $daysDiff = PHPExcel_Calculation_DateTime::DATEDIF($dates[0], $dates[$i], 'd');
             if (!is_numeric($daysDiff)) {
                 return PHPExcel_Calculation_Functions::VALUE();
